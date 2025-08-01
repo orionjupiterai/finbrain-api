@@ -1,0 +1,16 @@
+from fastapi import FastAPI
+from datetime import datetime
+
+app = FastAPI(title="FinBrain API")
+
+@app.get("/")
+async def root():
+    return {
+        "message": "Welcome to FinBrain API",
+        "status": "operational",
+        "timestamp": datetime.utcnow().isoformat()
+    }
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
